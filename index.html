@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="exemple1">
+<head>
+    <meta charset="UTF-8">
+    <title>scope controller vue exemple </title>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+
+        <div ng-controller="ctrl1">
+            <input type="text" ng-model="nom" placeholder="entrer un nom ">
+            <input type="text" ng-model="newElemet">
+            <button ng-click="addElemtn()"> add elements </button>
+            <ul>
+                <li ng-repeat="p in persons | filter:nom">
+                    {{p}}
+                </li>
+            </ul>
+            <div>
+                 <h2>data comping from server </h2>
+                  <table>
+                      <thead>
+                      <tr>
+                          <td>name </td>
+                          <td>email</td>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-repeat="d in data">
+                          <td>{{d.name}}</td>
+                          <td>{{d.email}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+            </div>
+        </div>
+</body>
+</html>
