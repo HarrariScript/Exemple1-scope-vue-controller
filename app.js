@@ -12,11 +12,22 @@ app.controller('ctrl1',function ($scope) {
 
 })
 
-app.controller("ctrl2",function ($scope,$http) {
+app.controller("ctrl2",function (dataManager , $scope) {
     $scope.data = [];
-    $http.get("data.json")
-        .then(function (response) {
-            $scope.data = response.data ;
+    dataManager.getData("data.json")
+        .then(function (data) {
+            $scope.data = data;
         })
+})
+
+app.service("dataManager",function ($http) {
+    return {
+        getData : function (url) {
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data ;
+                })
+        }
+    }
 })
 
